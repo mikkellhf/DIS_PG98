@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- jQuery and jQuery UI CSS -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+    <style>
+        body {
+            padding-top: 0px; /* Padding to offset the fixed navbar */
+            background-color: #f8f9fa;
+        }
+        .site-header {
+            margin-bottom: 40px;
+            width: 80%;
+            height: 10%;
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+
+        .filter-box {
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 1%; /* Adjusted padding */
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            margin-top: 25px;
+            width: 100%; /* Adjusted width */
+            float: left; /* Align to the left */
+        }
+
+       
+        .content-wrapper {
+            float: right; /* Align to the left */
+            width: 100%; /* Adjust width */
+        }
+       
+        .form-group {
+            margin-top: 1%; /* Minimized spacing */
+            margin-bottom: 1%; /* Minimized spacing */
+        }
+        .continent-dropdown {
+    height: 25px; /* Adjust as needed */
+    width: 100%;
+    justify-content: center;
+    border: none; /* Remove border */
+    margin: 0 auto; /* Center the dropdown menu */
+    border: 1px solid #dee2e6;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border-radius: 5px;
+
+
+}
+
+        .result-box {
+            background-color: #e9ecef; /* Nice shade of gray */
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 1%;
+            margin-top: 0%;
+            float: left; /* Align to the left */
+            width: 100%; /* Adjust width */
+        }
+        .ui-slider-range {
+            background: #007bff;
+        }
+        .ui-slider-handle {
+            border-color: #007bff;
+        }
+        .ui-slider {
+            height: 8px; /* Adjust as needed */
+            width: 98%;
+
+        }
+        .ui-slider .ui-slider-handle {
+        width: 15px; /* Adjust as needed */
+        height: 15px; /* Adjust as needed */
+        top: -5px;
+    }
+            .slider-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand mr-4" href="/">DIS_PROJECT</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                    <div class="navbar-nav mr-auto">
+                        <a class="nav-item nav-link" href="{{ url_for('Search.about') }}">About</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main" class="col-12 main-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-9 offset-md-0 content-wrapper">
+                    <div class="sql-query-box mt-4">
+                        <div class="result-box">
+                            {% block content %}
+                            {% endblock content %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="filter-box">
+                        <h4 class="text-center">Filter Options</h4>
+                        <form id="filterForm">
+                            <div class="form-group">
+                                <label for="continentSelect">Filter by Continent</label>
+                                <select class="continent-dropdown" id="continentSelect">
+                                    
+                                    <option>All Continents</option>
+                                    <option>Africa</option>
+                                    <option>Asia</option>
+                                    <option>Europe</option>
+                                    <option>North America</option>
+                                    <option>Oceania</option>
+                                    <option>South America</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="populationRange">Population </label>
+                                <div class="slider-container">
+                                    
+                                <div id="populationRangeSlider"></div>
+                            </div>
+                                <p><span id="populationRange">0 - 1,500,000,000</span></p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="gdpRange">GDP (Million USD)</label>
+                                <div class="slider-container">
+
+                                <div id="gdpRangeSlider"></div>
+                                </div>
+                                <p><span id="gdpRange">0 - 20,000</span></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="lifeExpectancyRange">Life Expectancy (Years)</label>
+                                <div class="slider-container">
+
+                                <div id="lifeExpectancyRangeSlider"></div>
+                                </div>
+                                <p><span id="lifeExpectancyRange">30 - 90</span></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="languageInput">Filter by Official Language</label>
+                                <input type="text" class="form-control" id="languageInput" placeholder="Enter language and press Enter">
+                                <div id="languageFilterList"></div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-block">Apply Filters</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+    
+  $(function() {
+
+    var languageFilters = [];
+
+    $("#populationRangeSlider").slider({
+        range: true,
+        min: 0,
+        max: 1500000000,
+        values: [0, 1500000000],
+        slide: function(event, ui) {
+            $("#populationRange").text(ui.values[0] + " - " + ui.values[1]);
+        }
+    });
+    $("#populationRange").text($("#populationRangeSlider").slider("values", 0) + " - " +
+        $("#populationRangeSlider").slider("values", 1));
+
+   
+    $("#gdpRangeSlider").slider({
+        range: true,
+        min: 0,
+        max: 25000000,
+        values: [0, 25000000],
+        slide: function(event, ui) {
+            $("#gdpRange").text(ui.values[0] + " - " + ui.values[1]);
+        }
+    });
+    $("#gdpRange").text($("#gdpRangeSlider").slider("values", 0) + " - " +
+        $("#gdpRangeSlider").slider("values", 1));
+
+    $("#lifeExpectancyRangeSlider").slider({
+        range: true,
+        min: 30,
+        max: 90,
+        values: [30, 90],
+        slide: function(event, ui) {
+            $("#lifeExpectancyRange").text(ui.values[0] + " - " + ui.values[1]);
+        }
+    });
+    $("#lifeExpectancyRange").text($("#lifeExpectancyRangeSlider").slider("values", 0) + " - " +
+        $("#lifeExpectancyRangeSlider").slider("values", 1));
+
+    // Add language to filter list when input field loses focus
+    $("#languageInput").on("keypress", function(event) {
+    if (event.which == 13) { // 13 is the key code for 'Enter'
+        event.preventDefault(); // Prevent form submission
+        var language = $(this).val().trim();
+        if (language !== "") {
+            languageFilters.push(language);
+            $(this).val(""); // Clear input field
+            updateLanguageFilterList();
+        }
+    }
+    });
+
+    // Update language filter list
+    function updateLanguageFilterList() {
+        $("#languageFilterList").empty();
+        $.each(languageFilters, function(index, language) {
+            $("#languageFilterList").append("<span class='badge badge-primary'>" + language + "</span>");
+        });
+    }
+
+    $("#filterForm").on("submit", function(event) {
+        event.preventDefault();
+        var populationMin = $("#populationRangeSlider").slider("values", 0);
+        var populationMax = $("#populationRangeSlider").slider("values", 1);
+        
+        var gdpMin = $("#gdpRangeSlider").slider("values", 0);
+        var gdpMax = $("#gdpRangeSlider").slider("values", 1);
+        var lifeExpectancyMin = $("#lifeExpectancyRangeSlider").slider("values", 0);
+        var lifeExpectancyMax = $("#lifeExpectancyRangeSlider").slider("values", 1);
+        var selectedContinent = $("#continentSelect").val();
+
+        // Construct query parameters
+        var queryParams = "?popmin=" + populationMin + "&popmax=" + populationMax +
+            "&gdpmin=" + gdpMin + "&gdpmax=" + gdpMax +
+            "&lifemin=" + lifeExpectancyMin + "&lifemax=" + lifeExpectancyMax +
+            "&continent=" + selectedContinent;
+
+        // Add language filters to query parameters
+        if (languageFilters.length > 0) {
+            queryParams += "&languages=" + languageFilters.join(",");
+        }
+
+        window.location.href = "/search" + queryParams;
+    });
+
+    // Clear language filters when Apply Filters button is clicked
+    $("#applyFiltersBtn").on("click", function(event) {
+        event.preventDefault();
+        languageFilters = []; // Clear language filters
+        $("#languageFilterList").empty(); // Clear language filter list
+    });
+
+            // Set the slider values
+
+
+});
+
+</script>
+</body>
+</html>

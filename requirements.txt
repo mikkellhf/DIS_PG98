@@ -1,0 +1,5 @@
+flask
+flask_bcrypt
+flask_wtf
+wtforms
+psycopg2

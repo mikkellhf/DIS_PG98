@@ -21,6 +21,7 @@ This has only been run using Windows, and using the python method to run the app
 ## Running
 1. set the database in __init__.py file.
 2. 
+
     python3 run.py
 
 ### Debug

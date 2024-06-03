@@ -32,8 +32,11 @@ Run the following command, to get the webapp in debug mode.
 
 # Potential problems
 If the following error is shown when the command: python3 run.py, is run:
+\\
 "C:\path\DIS_PG98>python3 run.py
+\\
 Error executing SQL file C:\path\DIS_PG98\DIS_Project\schema_ins.sql: could not open file "C:\path\DIS_PG98\DIS_Project\Data_Sets\health.csv" for reading: Permission denied
+\\
 HINT:  COPY FROM instructs the PostgreSQL server process to read a file. You may want a client-side facility such as psql's \copy." 
 Please confer to the following guide:
 1. Right-click the file or folder you want to set permissions for and select "Properties".

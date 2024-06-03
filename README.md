@@ -28,3 +28,18 @@ This has only been run using Windows, and done using python to run the applicati
 Run the following command, to get the webapp in debug mode. 
 
     python3 run_debug.py
+
+
+# Potential problems
+If the following error is shown when the command: python3 run.py, is run:
+"C:\path\DIS_PG98>python3 run.py
+Error executing SQL file C:\path\DIS_PG98\DIS_Project\schema_ins.sql: could not open file "C:\path\DIS_PG98\DIS_Project\Data_Sets\health.csv" for reading: Permission denied
+HINT:  COPY FROM instructs the PostgreSQL server process to read a file. You may want a client-side facility such as psql's \copy." 
+Please confer to the following guide:
+1. Right-click the file or folder you want to set permissions for and select "Properties".
+2. Navigate to the "Security" tab.
+3. Click on the "Edit" button to change permissions.
+4. In the permissions window, click the "Add" button. In lowest text box, write "Everyone" or "Alle" and press enter. This should pop-up another window, where you select the "Everyone"/"Alle". Then, check the boxes in the "Permissions for [username]" section to grant or deny specific permissions (like "Read", "Write", etc.).
+5. Click "OK" to apply the changes.
+The issue should now have been fixed, and the command should run the webapp flawlessly. 
+Futher reading: https://kb.uwec.edu/articles/drives-establishing-windows-file-and-folder-level-permissions

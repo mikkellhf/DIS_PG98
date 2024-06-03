@@ -39,4 +39,4 @@ def execute_sql_file(filename, Data_Sets = None):
     finally:
         cur.close()
 Data_sets = ['health.csv', 'gdp.csv', 'continents.csv', 'language.csv']
-execute_sql_file('schema_ins.sql', Data_sets)
+execute_sql_file('schema.sql', Data_sets)

@@ -20,7 +20,7 @@ This has only been run using Windows, and done using python to run the applicati
 
 ## Running
 1. set the database in __init__.py file.
-2. 
+2. Run the following command to run the web application
 
     python3 run.py
 

@@ -31,7 +31,7 @@ Run the following command, to get the webapp in debug mode.
 
 
 # Potential problems
-If the following error is shown when the command: python3 run.py, is run:
+If the following error is shown:
 
 "C:\path\DIS_PG98>python3 run.py
 
@@ -47,5 +47,7 @@ Please confer to the following guide:
 3. Click on the "Edit" button to change permissions.
 4. In the permissions window, click the "Add" button. In lowest text box, write "Everyone" or "Alle" and press enter. This should pop-up another window, where you select the "Everyone"/"Alle". Then, check the boxes in the "Permissions for [username]" section to grant or deny specific permissions (like "Read", "Write", etc.).
 5. Click "OK" to apply the changes.
+
+   
 The issue should now have been fixed, and the command should run the webapp flawlessly. 
 Futher reading: https://kb.uwec.edu/articles/drives-establishing-windows-file-and-folder-level-permissions

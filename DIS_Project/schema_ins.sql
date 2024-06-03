@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS countries_health;
 DROP TABLE IF EXISTS countries_gdp;
 DROP TABLE IF EXISTS countries_continent;
 DROP TABLE IF EXISTS countries_random;
+DROP TABLE IF EXISTS countries_language;
 
 DROP SCHEMA IF EXISTS public; 
 
@@ -28,15 +29,14 @@ CREATE TABLE IF NOT EXISTS countries_continent(
 	Country				varchar(60)
 );
 
-CREATE TABLE IF NOT EXISTS countries_random(
+CREATE TABLE IF NOT EXISTS countries_language(
 	Country				varchar(60),
-	Co2_Emissions		varchar(60),
 	Official_language	varchar(60)
 );
 
 
 
 COPY countries_health(Country, LifeExpectancy,FertilityRate,Population,Region) FROM %s WITH CSV HEADER DELIMITER ',';
-COPY countries_gdp(year,rank,country,state,gdp,gdp_percent) FROM %s WITH CSV HEADER DELIMITER ',';
+COPY countries_gdp(year,rank,Country,state,gdp,gdp_percent) FROM %s WITH CSV HEADER DELIMITER ',';
 COPY countries_continent(Continent,Country) FROM %s WITH CSV HEADER DELIMITER ',';
-COPY countries_random(Country, Co2_Emissions, Official_language) FROM %s WITH CSV HEADER DELIMITER ',';
+COPY countries_language(Country, Official_language) FROM %s WITH CSV HEADER DELIMITER ',';

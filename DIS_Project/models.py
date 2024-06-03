@@ -1,8 +1,4 @@
-# write all your SQL queries in this file.
 from DIS_Project import conn
-
-
-
 
 def search_country(min_population, max_population, min_gdp, max_gdp, min_lifeExpectancy, max_lifeExpectancy, selected_continent, language):
     columns_health = "Country, LifeExpectancy, FertilityRate, Population"
@@ -42,7 +38,7 @@ def search_country(min_population, max_population, min_gdp, max_gdp, min_lifeExp
     
     sql_query_language = f"""
         (SELECT {columns_langauge} 
-        FROM countries_random 
+        FROM countries_language 
         WHERE Official_language LIKE '{language[0]}%' 
         """
     for i in range(1, len(language)):

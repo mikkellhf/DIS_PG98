@@ -1,4 +1,7 @@
 # Country Query Project: DIS_Project
+## Deliverables 
+1. The E/R diagram can be found in the DIS_PG98 folder, as ER_diagram.png
+2. The usage of regular expression matching can be found in DIS_PG98\DIS_Project\models.py<line 39-46>
 ## Usage
 The DIS_Project is a website running Python and Flask library.
 The schema of the database is countries and certain fact about countries.

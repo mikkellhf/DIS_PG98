@@ -1,10 +1,9 @@
+DROP SCHEMA IF EXISTS public CASCADE; 
+
 DROP TABLE IF EXISTS countries_health;
 DROP TABLE IF EXISTS countries_gdp;
 DROP TABLE IF EXISTS countries_continent;
-DROP TABLE IF EXISTS countries_random;
 DROP TABLE IF EXISTS countries_language;
-
-DROP SCHEMA IF EXISTS public; 
 
 CREATE SCHEMA IF NOT EXISTS public;
 

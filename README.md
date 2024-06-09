@@ -43,8 +43,9 @@ Error executing SQL file C:\path\DIS_PG98\DIS_Project\schema_ins.sql: could not 
 
 
 HINT:  COPY FROM instructs the PostgreSQL server process to read a file. You may want a client-side facility such as psql's \copy." 
+Please confer to the guide below:
+
 ## Guide
-Please confer to the following guide:
 1. Right-click the file or folder you want to set permissions for and select "Properties". This should be the folder Data_Sets or the individual files within the folder. 
 2. Navigate to the "Security" tab.
 3. Click on the "Edit" button to change permissions.

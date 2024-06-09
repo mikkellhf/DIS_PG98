@@ -19,7 +19,7 @@ Run the code below to install the necessary modules.
     pip install -r requirements.txt
 
 #### notes
-This has only been run using Windows, and done using python to run the application. 
+This has only been run on Windows using python to run the application. 
 
 ## Running
 1. set the database in __init__.py file.

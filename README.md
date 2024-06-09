@@ -25,7 +25,7 @@ This has only been run on Windows using python to run the application.
 1. set the database in __init__.py file.
 2. Run the following command to run the web application
 
-    python3 run.py
+       python3 run.py
 
 ### Debug
 Run the following command, to get the webapp in debug mode. 
